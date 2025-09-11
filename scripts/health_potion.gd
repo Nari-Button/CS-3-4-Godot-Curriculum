@@ -5,6 +5,7 @@ class_name HealthPotion
 @export var heal_amount: int = 30
 @export var auto_pickup: bool = true
 
+
 func _ready():
 	print("Health Potion created - heals " + str(heal_amount) + " HP")
 	# Connect the collision signal
