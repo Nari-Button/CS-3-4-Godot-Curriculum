@@ -67,6 +67,7 @@ func collect_pickup(_type : String, _amount : int):
 # - level_up()
 # - attack()
 
+
 func change_health(_amount): 
 	health += _amount
 	if health > maxHealth:
@@ -76,6 +77,14 @@ func change_health(_amount):
 		die()
 		
 	print("Health: " + str(health))
+
+var can_take_damage = true
+
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(1).timeout
+	can_take_damage = true
+	print("Health: " +str(health))
 
 func die():
 	print("You died!")
