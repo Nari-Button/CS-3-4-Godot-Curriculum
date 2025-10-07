@@ -88,4 +88,13 @@ grow_vertical = 2
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-496, 36)
+health = null
+speed = null
+is_hostile = null
 move_points = Array[Vector2]([Vector2(-469, 124), Vector2(-324, -19)])
+move_point = null
+dialogue = null
+inventory = null
+inventory_drop = null
+type = null
+target = null

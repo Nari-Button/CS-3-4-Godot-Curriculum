@@ -4,11 +4,14 @@ class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var move_speed: float = 200.0
+@export var move_speed: float = 125.0
 @export var maxHealth : int = 10
 @export var health : int = maxHealth
 @export var coins : int = 0
 
+
+var knockback: Vector2 = Vector2.ZERO
+var knockback_timer: float = 0.0
 
 var facing: Vector2 = Vector2.ZERO
 
@@ -19,6 +22,14 @@ func _ready():
 
 func _physics_process(delta):
 	handle_movement()
+	if knockback_timer > 0.0:
+		velocity = knockback
+		knockback_timer -= delta
+		if knockback_timer <= 0.0:
+			knockback = Vector2.ZERO
+	else:
+		handle_movement()
+	move_and_slide()
 
 func handle_movement():
 	# Get input direction from arrow keys
@@ -34,6 +45,11 @@ func handle_movement():
 	# Apply movement using Godot's built-in physics
 	velocity = direction * move_speed
 	move_and_slide()
+
+func apply_knockback(direction: Vector2, force: float, knockback_duration: float) -> void:
+	knockback = direction * force
+	knockback_timer = knockback_duration
+
 
 # BAD QUICK CODE MAYBE CHANGE
 func handle_sprite(direction: Vector2) -> void:
@@ -53,6 +69,7 @@ func handle_sprite(direction: Vector2) -> void:
 	elif facing.x > 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = false
+
 
 func collect_pickup(_type : String, _amount : int):
 	if _type == "coin":
@@ -77,14 +94,6 @@ func change_health(_amount):
 		die()
 		
 	print("Health: " + str(health))
-
-var can_take_damage = true
-
-func iframes():
-	can_take_damage = false
-	await get_tree().create_timer(1).timeout
-	can_take_damage = true
-	print("Health: " +str(health))
 
 func die():
 	print("You died!")
