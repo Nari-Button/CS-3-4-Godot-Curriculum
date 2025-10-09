@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Player
+@onready var attack_box: Area2D = $Attack_Box
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var move_speed: float = 125.0
+@export var move_speed: float = 200.0
 @export var maxHealth : int = 10
 @export var health : int = maxHealth
 @export var coins : int = 0
@@ -22,14 +23,6 @@ func _ready():
 
 func _physics_process(delta):
 	handle_movement()
-	if knockback_timer > 0.0:
-		velocity = knockback
-		knockback_timer -= delta
-		if knockback_timer <= 0.0:
-			knockback = Vector2.ZERO
-	else:
-		handle_movement()
-	move_and_slide()
 
 func handle_movement():
 	# Get input direction from arrow keys
@@ -61,14 +54,18 @@ func handle_sprite(direction: Vector2) -> void:
 	
 	if facing.y > 0:
 		animated_sprite.play(prefix + "_forward")
+		attack_box.position = Vector2(-1,45)
 	elif facing.y < 0:
 		animated_sprite.play(prefix + "_backward")
+		attack_box.position = Vector2(-1,-45)
 	elif facing.x < 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = true
+		attack_box.position = Vector2(-30,0)
 	elif facing.x > 0:
 		animated_sprite.play(prefix + "_side")
 		animated_sprite.flip_h = false
+		attack_box.position = Vector2(30,0)
 
 
 func collect_pickup(_type : String, _amount : int):

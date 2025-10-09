@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cqvpxnx2pwqhk"]
+[gd_scene load_steps=41 format=3 uid="uid://cqvpxnx2pwqhk"]
 
 [ext_resource type="Script" uid="uid://dbc6krbwjvop0" path="res://scripts/player.gd" id="1_4x8vn"]
 [ext_resource type="Texture2D" uid="uid://c1j65egvfiye4" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/idle.png" id="2_wn8rh"]
@@ -272,6 +272,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4x8vn")
 
@@ -290,3 +292,9 @@ autoplay = "idle_forward"
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 2)
 texture = ExtResource("4_dqkch")
+
+[node name="Attack_Box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Box"]
+shape = SubResource("RectangleShape2D_dqkch")
+debug_color = Color(0.7664553, 0.2160632, 0.2034111, 0.41960785)
