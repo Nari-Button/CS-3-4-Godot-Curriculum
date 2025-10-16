@@ -38,7 +38,9 @@ func movement(_delta):
 	if is_hostile:
 		target = player.position
 	else:
-		target = move_points[move_point]
+		if move_points != []:
+			target = move_points[move_point]
+		else: target = position
 	var target_direction = position.direction_to(target)
 	velocity = speed * target_direction
 	if position.distance_to(target)<50:
