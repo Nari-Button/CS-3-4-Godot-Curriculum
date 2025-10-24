@@ -3,11 +3,12 @@ class_name merchant
 
 var open = true
 var buyer = true
-var barter_amount: float= 0.8
+var barter_amount: float= 0.9
 var refusal = false
 var sleeping = false
 var steal = false
 var greeting = "Welcome to my shop."
+var selected_item = 0
 
 
 func show_wares():
