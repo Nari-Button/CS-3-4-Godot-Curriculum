@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4cu88av4u6ly"]
+[gd_scene load_steps=11 format=3 uid="uid://b4cu88av4u6ly"]
 
 [ext_resource type="Script" uid="uid://d3ylhgiahsp36" path="res://scripts/Merchant.gd" id="1_0gpyn"]
 [ext_resource type="Texture2D" uid="uid://b85d5s3i3t768" path="res://assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skeleton1/v2/skeleton_v2_1.png" id="2_0gpyn"]
 [ext_resource type="PackedScene" uid="uid://l7oauc6tswy3" path="res://scenes/enemies/detection_radius.tscn" id="3_nwq87"]
+[ext_resource type="Script" uid="uid://dx7bbwkoj1r5d" path="res://scripts/inventory.gd" id="4_nwq87"]
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="5_jsf2g"]
+[ext_resource type="Resource" uid="uid://btir0ien44ip" path="res://Items/food.tres" id="6_hotu8"]
+[ext_resource type="Resource" uid="uid://d1vex45fc05l0" path="res://Items/potion.tres" id="7_51u1s"]
+[ext_resource type="Resource" uid="uid://kpet6ilar02c" path="res://Items/shield.tres" id="8_8qwh0"]
+[ext_resource type="Resource" uid="uid://bj1osc00je5lw" path="res://Items/sword.tres" id="9_i1w6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbebl"]
 size = Vector2(11, 14)
@@ -18,5 +24,9 @@ shape = SubResource("RectangleShape2D_rbebl")
 texture = ExtResource("2_0gpyn")
 
 [node name="Detection Radius" parent="." instance=ExtResource("3_nwq87")]
+
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("4_nwq87")
+my_inventory = Array[ExtResource("5_jsf2g")]([ExtResource("7_51u1s"), ExtResource("6_hotu8"), ExtResource("8_8qwh0"), ExtResource("9_i1w6g")])
 
 [connection signal="body_entered" from="Detection Radius" to="." method="_on_detection_radius_body_entered"]

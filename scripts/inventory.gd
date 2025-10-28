@@ -1,41 +1,45 @@
-extends Node
+extends Node2D
 class_name inventory
 
-var my_inventory : Array[items] = []
+@export var my_inventory : Array[inventory_item] = []
 var selected_item : int = 5
-var max_inventory : int = 5
+var max_items : int = 5
+var current_item : int = 0
 
+func _ready() -> void:
+	pass
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("item_up"):
 		selected_item -=1
 		if selected_item <0:
 			selected_item = 0
-		print(my_inventory[selected_item])
+		print(my_inventory[selected_item].type)
+	
 	if Input.is_action_just_pressed("item_down"):
 		selected_item +=1
 		if selected_item > my_inventory.size()-1:
 			selected_item = my_inventory.size()-1
-		print(my_inventory[selected_item])
+		print(my_inventory[selected_item].type)
 
-func display_inventory(index: int):
+func display_inventory(_index: int):
 	print("The current item is " + my_inventory[current_item].name)
 	print("It costs " + str(my_inventory[current_item].item))
 	
-func add_inventory(new_item:Resource):
+func add_inventory(_new_item:Resource):
 	if my_inventory.size() < max_items: 
-		my_inventory.append()
-	else: print("The inventory is already full")
+		my_inventory.append(1)
+	else:
+		print("The inventory is already full")
 	
-func remove_inventory(item_to_use: Resource):
-	#
+func remove_inventory(_item_to_use: Resource):
 	pass
 
 
-func show_wares():
-	print("Here's what's in stock")
-	for item in inventory:
-		print(item)
+#func show_wares():
+	#print("Here's what's in stock")
+	#for item in inventory:
+		#print(item)
 		
 
 # inventory[inventory_items]

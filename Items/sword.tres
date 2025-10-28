@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=2 format=3 uid="uid://bj1osc00je5lw"]
+
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="1_owsk0"]
+
+[resource]
+resource_name = "rough sword"
+script = ExtResource("1_owsk0")
+type = "rough"
+metadata/_custom_type_script = "uid://c3ekmk6otg3cy"

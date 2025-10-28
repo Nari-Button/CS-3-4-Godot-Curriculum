@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=2 format=3 uid="uid://btir0ien44ip"]
+
+[ext_resource type="Script" uid="uid://c3ekmk6otg3cy" path="res://scripts/inventory_items.gd" id="1_jqfn4"]
+
+[resource]
+resource_name = "small food"
+script = ExtResource("1_jqfn4")
+type = "small food"
+metadata/_custom_type_script = "uid://c3ekmk6otg3cy"
