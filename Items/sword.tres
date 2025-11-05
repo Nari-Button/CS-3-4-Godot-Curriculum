@@ -5,5 +5,5 @@
 [resource]
 resource_name = "rough sword"
 script = ExtResource("1_owsk0")
-type = "rough"
+type = "rough sword"
 metadata/_custom_type_script = "uid://c3ekmk6otg3cy"

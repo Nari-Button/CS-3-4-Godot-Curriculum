@@ -5,5 +5,5 @@
 [resource]
 resource_name = "rough shield"
 script = ExtResource("1_ftwdv")
-type = "rough"
+type = "rough shield"
 metadata/_custom_type_script = "uid://c3ekmk6otg3cy"
