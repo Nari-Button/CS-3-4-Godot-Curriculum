@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileResource" load_steps=3 format=3 uid="uid://b7qxm2v8pqb3k"]
 
 [ext_resource type="Script" uid="uid://dmxm5o1dwdxrs" path="res://scripts/resources/projectile_resource.gd" id="1_projectile"]
-[ext_resource type="Texture2D" uid="uid://cc2ht116skef3" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/arrow/arrow_3.png" id="2_qyqwf"]
+[ext_resource type="Texture2D" uid="uid://cqatq7nlwor0e" path="res://assets/point_arrow.png" id="2_qyqwf"]
 
 [resource]
 script = ExtResource("1_projectile")

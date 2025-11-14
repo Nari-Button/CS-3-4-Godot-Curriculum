@@ -42,6 +42,9 @@ class_name Player
 ## ============================================================================
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_system: WeaponSystem = $WeaponSystem
+var basic_pistol = preload("res://resources/weapons/basic_pistol.tres")
+var glass_bottle = preload("res://resources/weapons/glass_bottle.tres")
 
 # Movement - Controls how fast the player moves
 @export var move_speed: float = 200.0
@@ -75,8 +78,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready():
+	weapon_system.equip_weapon(glass_bottle)
 	current_health = max_health
-
+	
+	if Input.is_action_just_pressed("E key"):
+		print("this shows")
+		weapon_system.equip(basic_pistol)
+	
+	
 	# Set collision layers (Layer 1 = player)
 	collision_layer = 1
 	collision_mask = 2 | 8  # Collide with enemies (layer 2) and XP drops (layer 8)
