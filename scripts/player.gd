@@ -81,17 +81,18 @@ func _ready():
 	weapon_system.equip_weapon(glass_bottle)
 	current_health = max_health
 	
-	if Input.is_action_just_pressed("E key"):
-		print("this shows")
-		weapon_system.equip(basic_pistol)
-	
-	
 	# Set collision layers (Layer 1 = player)
 	collision_layer = 1
 	collision_mask = 2 | 8  # Collide with enemies (layer 2) and XP drops (layer 8)
 
 func _physics_process(_delta):
 	handle_movement()
+	
+	if Input.is_action_just_pressed("E"):
+		if weapon_system.equipped_weapon.item_name == "Basic Pistol":
+			weapon_system.equip_weapon(glass_bottle)
+		else: 
+			weapon_system.equip_weapon(basic_pistol)
 
 func handle_movement():
 	# Get input direction from arrow keys
